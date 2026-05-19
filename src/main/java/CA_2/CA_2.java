@@ -46,7 +46,24 @@ public class CA_2 {
                     break;
 
                 case 2:
-                    System.out.println("Search applicant selected.");
+                    applicantManager.setEmployees(
+                            SortUtil.mergeSort(applicantManager.getEmployees())
+                    );
+
+                    System.out.print("Enter applicant full name to search: ");
+                    String searchName = scanner.nextLine();
+
+                    Employee foundEmployee = SearchUtil.binarySearch(
+                            applicantManager.getEmployees(),
+                            searchName
+                    );
+
+                    if (foundEmployee != null) {
+                        System.out.println("\nApplicant found:");
+                        System.out.println(foundEmployee);
+                    } else {
+                        System.out.println("\nApplicant not found.");
+                    }
                     break;
 
                 case 3:
