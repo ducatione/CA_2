@@ -19,6 +19,10 @@ import java.util.List;
 public class ApplicantManager {
 
     private List<Employee> employees;
+    
+    public void setEmployees(List<Employee> employees) {
+        this.employees = employees;
+    }
 
     public ApplicantManager() {
         employees = new ArrayList<>();

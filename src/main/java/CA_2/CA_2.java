@@ -28,8 +28,21 @@ public class CA_2 {
             int choice = getMenuChoice();
 
             switch (choice) {
+                    
                 case 1:
-                    System.out.println("Sort applicants selected.");
+                    applicantManager.setEmployees(
+                            SortUtil.mergeSort(applicantManager.getEmployees())
+                    );
+
+                    System.out.println("\nApplicants sorted alphabetically.");
+                    System.out.println("First 20 applicants:");
+
+                    int limit = Math.min(20, applicantManager.getEmployees().size());
+
+                    for (int i = 0; i < limit; i++) {
+                        System.out.println((i + 1) + ". "
+                                + applicantManager.getEmployees().get(i).getFullName());
+                    }
                     break;
 
                 case 2:
