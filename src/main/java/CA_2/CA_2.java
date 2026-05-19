@@ -65,9 +65,32 @@ public class CA_2 {
                         System.out.println("\nApplicant not found.");
                     }
                     break;
-
+                    
                 case 3:
-                    System.out.println("Add employee selected.");
+                    String firstName = ValidationUtil.getNonEmptyString(
+                            scanner,
+                            "Enter employee first name: "
+                    );
+
+                    String lastName = ValidationUtil.getNonEmptyString(
+                            scanner,
+                            "Enter employee last name: "
+                    );
+
+                    ManagerType managerType = ValidationUtil.getValidManagerType(scanner);
+                    DepartmentType departmentType = ValidationUtil.getValidDepartmentType(scanner);
+
+                    Employee newEmployee = new Employee(
+                            firstName,
+                            lastName,
+                            managerType,
+                            departmentType
+                    );
+
+                    applicantManager.getEmployees().add(newEmployee);
+
+                    System.out.println("\nEmployee added successfully:");
+                    System.out.println(newEmployee);
                     break;
 
                 case 4:
