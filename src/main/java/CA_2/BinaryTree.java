@@ -91,6 +91,11 @@ public class BinaryTree {
         return calculateHeight(root);
     }
 
+    
+    /*
+     * Recursively calculates the height of the tree by comparing
+     * the height of the left subtree and the right subtree.
+     */
     private int calculateHeight(TreeNode node) {
 
         if (node == null) {
@@ -107,6 +112,9 @@ public class BinaryTree {
         return countNodes(root);
     }
 
+    /*
+     * Recursively counts all nodes in the binary tree.
+     */
     private int countNodes(TreeNode node) {
 
         if (node == null) {

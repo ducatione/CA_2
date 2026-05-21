@@ -12,6 +12,9 @@ package CA_2;
 import java.util.ArrayList;
 import java.util.List;
 
+/*
+ * This class implements recursive Merge Sort.
+ */
 public class SortUtil {
 
     public static List<Employee> mergeSort(List<Employee> employees) {

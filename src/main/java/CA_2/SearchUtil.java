@@ -11,6 +11,9 @@ package CA_2;
 
 import java.util.List;
 
+/*
+ * This class implements recursive Binary Search.
+ */
 public class SearchUtil {
 
     public static Employee binarySearch(List<Employee> employees, String targetName) {
