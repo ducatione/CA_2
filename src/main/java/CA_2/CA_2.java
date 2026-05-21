@@ -30,8 +30,13 @@ public class CA_2 {
             int choice = getMenuChoice();
 
             switch (choice) {
-                    
-                case 1:
+                
+                case 1 -> {
+                    if (applicantManager.getEmployees().isEmpty()) {
+                        System.out.println("No applicants available to sort.");
+                        break;
+                    }
+
                     applicantManager.setEmployees(
                             SortUtil.mergeSort(applicantManager.getEmployees())
                     );
@@ -45,15 +50,22 @@ public class CA_2 {
                         System.out.println((i + 1) + ". "
                                 + applicantManager.getEmployees().get(i).getFullName());
                     }
-                    break;
+                }
 
-                case 2:
+                case 2 -> {
+                    if (applicantManager.getEmployees().isEmpty()) {
+                        System.out.println("No applicants available to search.");
+                        break;
+                    }
+
                     applicantManager.setEmployees(
                             SortUtil.mergeSort(applicantManager.getEmployees())
                     );
 
-                    System.out.print("Enter applicant full name to search: ");
-                    String searchName = scanner.nextLine();
+                    String searchName = ValidationUtil.getNonEmptyString(
+                            scanner,
+                            "Enter applicant full name to search: "
+                    );
 
                     Employee foundEmployee = SearchUtil.binarySearch(
                             applicantManager.getEmployees(),
@@ -66,9 +78,9 @@ public class CA_2 {
                     } else {
                         System.out.println("\nApplicant not found.");
                     }
-                    break;
+                }
                     
-                case 3:
+                case 3 -> {
                     String firstName = ValidationUtil.getNonEmptyString(
                             scanner,
                             "Enter employee first name: "
@@ -93,9 +105,15 @@ public class CA_2 {
 
                     System.out.println("\nEmployee added successfully:");
                     System.out.println(newEmployee);
-                    break;
+                }
 
-                case 4:
+                    
+                case 4 -> {
+                    if (applicantManager.getEmployees().isEmpty()) {
+                        System.out.println("No employees available to create binary tree.");
+                        break;
+                    }
+
                     binaryTree = new BinaryTree();
 
                     int treeLimit = Math.min(20, applicantManager.getEmployees().size());
@@ -106,23 +124,28 @@ public class CA_2 {
 
                     System.out.println("\nBinary tree created successfully.");
                     System.out.println(treeLimit + " employees inserted using level-order insertion.");
-                    break;
+                }
 
-                case 5:
+                    
+                case 5 -> {
+                    if (binaryTree.getNodeCount() == 0) {
+                        System.out.println("Binary tree has not been created yet. Please select option 4 first.");
+                        break;
+                    }
+
                     System.out.println("\n===== EMPLOYEE BINARY TREE =====");
                     binaryTree.displayLevelOrder();
 
                     System.out.println("\nTree Height: " + binaryTree.getHeight());
                     System.out.println("Total Nodes: " + binaryTree.getNodeCount());
-                    break;
+                }
 
-                case 6:
+                case 6 -> {
                     System.out.println("Exiting system. Goodbye.");
                     running = false;
-                    break;
+                }
 
-                default:
-                    System.out.println("Invalid option. Please choose between 1 and 6.");
+                default -> System.out.println("Invalid option. Please choose between 1 and 6.");
             }
         }
     }
