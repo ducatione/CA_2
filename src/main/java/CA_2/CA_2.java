@@ -19,6 +19,8 @@ public class CA_2 {
     public static void main(String[] args) {
         ApplicantManager applicantManager = new ApplicantManager();
         applicantManager.loadApplicantsFromFile();
+        
+        BinaryTree binaryTree = new BinaryTree();
 
         boolean running = true;
 
@@ -94,11 +96,24 @@ public class CA_2 {
                     break;
 
                 case 4:
-                    System.out.println("Create binary tree selected.");
+                    binaryTree = new BinaryTree();
+
+                    int treeLimit = Math.min(20, applicantManager.getEmployees().size());
+
+                    for (int i = 0; i < treeLimit; i++) {
+                        binaryTree.insert(applicantManager.getEmployees().get(i));
+                    }
+
+                    System.out.println("\nBinary tree created successfully.");
+                    System.out.println(treeLimit + " employees inserted using level-order insertion.");
                     break;
 
                 case 5:
-                    System.out.println("Display tree selected.");
+                    System.out.println("\n===== EMPLOYEE BINARY TREE =====");
+                    binaryTree.displayLevelOrder();
+
+                    System.out.println("\nTree Height: " + binaryTree.getHeight());
+                    System.out.println("Total Nodes: " + binaryTree.getNodeCount());
                     break;
 
                 case 6:
